@@ -40,8 +40,7 @@ public class IngredientController {
 		this.recipeRepository = recipeRepository;
 	}
 
-	@GetMapping
-	@RequestMapping("/recipe/{recipeId}/ingredients")
+	@GetMapping("/recipe/{recipeId}/ingredients")
 	public String listIngredients(@PathVariable String recipeId, Model model) {
 		System.out
 				.println("Getting ingredient list for recipe id: " + recipeId);
@@ -51,8 +50,7 @@ public class IngredientController {
 		return "recipe/ingredient/list";
 	}
 
-	@GetMapping
-	@RequestMapping("recipe/{recipeId}/ingredient/{id}/show")
+	@GetMapping("recipe/{recipeId}/ingredient/{id}/show")
 	public String showRecipeIngredient(@PathVariable String recipeId,
 			@PathVariable String id, Model model) {
 		System.out.println("recipe/{recipeId}/ingredient/{id}/show");
@@ -64,8 +62,7 @@ public class IngredientController {
 		return "recipe/ingredient/show";
 	}
 
-	@GetMapping
-	@RequestMapping("recipe/{recipeId}/ingredient/new")
+	@GetMapping("recipe/{recipeId}/ingredient/new")
 	public String newIngredient(@PathVariable String recipeId, Model model) {
 		System.out.println("recipe/{recipeId}/ingredient/new");
 		// RecipeCommand
@@ -79,8 +76,7 @@ public class IngredientController {
 		return "recipe/ingredient/ingredientform";
 	}
 
-	@GetMapping
-	@RequestMapping("recipe/{recipeId}/ingredient/{id}/update")
+	@GetMapping("recipe/{recipeId}/ingredient/{id}/update")
 	public String updateRecipeIngredient(@PathVariable String recipeId,
 			@PathVariable String id, Model model) {
 		System.out.println("recipe/{recipeId}/ingredient/{id}/update");
@@ -106,8 +102,7 @@ public class IngredientController {
 				+ "/ingredient/" + savedCommand.getId() + "/show";
 	}
 
-	@GetMapping
-	@RequestMapping("recipe/{recipeId}/ingredient/{id}/delete")
+	@GetMapping("recipe/{recipeId}/ingredient/{id}/delete")
 	public String deleteIngredient(@PathVariable String recipeId,
 			@PathVariable String id) {
 		System.out.println("deleting the ingredient id " + id);
