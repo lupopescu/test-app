@@ -28,16 +28,15 @@ public class IngredientController {
 	private final RecipeService recipeService;
 	private final UnitOfMeasureService unitOfMeasureService;
 
-	private final RecipeRepository recipeRepository;
+	
 
 	public IngredientController(IngredientService ingredientService,
 			RecipeService recipeService,
-			UnitOfMeasureService unitOfMeasureService,
-			RecipeRepository recipeRepository) {
+			UnitOfMeasureService unitOfMeasureService) {
 		this.ingredientService = ingredientService;
 		this.recipeService = recipeService;
 		this.unitOfMeasureService = unitOfMeasureService;
-		this.recipeRepository = recipeRepository;
+		
 	}
 
 	@GetMapping("/recipe/{recipeId}/ingredients")
