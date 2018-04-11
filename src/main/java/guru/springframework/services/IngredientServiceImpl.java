@@ -12,6 +12,7 @@ import guru.springframework.converters.IngredientCommandToIngredient;
 import guru.springframework.converters.IngredientToIngredientCommand;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Recipe;
+import guru.springframework.exceptions.NotFoundException;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 
@@ -41,7 +42,7 @@ public class IngredientServiceImpl implements IngredientService {
 		Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
 		if (!recipeOptional.isPresent()) {
 			// todo impl error handling
-			System.out.println("recipe id not found. Id: " + recipeId);
+			throw new NotFoundException("recipe id not found. Id: " + recipeId);
 		}
 
 		Recipe recipe = recipeOptional.get();
@@ -54,7 +55,7 @@ public class IngredientServiceImpl implements IngredientService {
 
 		if (!ingredientCommandOptional.isPresent()) {
 			// todo impl error handling
-			System.out.println("Ingredient id not found: " + ingredientId);
+			throw new NotFoundException("Ingredient id not found: " + ingredientId);
 		}
 
 		return ingredientCommandOptional.get();
@@ -69,7 +70,7 @@ public class IngredientServiceImpl implements IngredientService {
 		if (!recipeOptional.isPresent()) {
 
 			// todo toss error if not found!
-			System.out.println("Recipe not found for id: "
+			System.out.println("Recipe not found for ID: "
 					+ command.getRecipeId());
 			return new IngredientCommand();
 		} else {
